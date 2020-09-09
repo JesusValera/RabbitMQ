@@ -1,5 +1,6 @@
 {
   "require": {
-    "vendor/php-amqplib/php-amqplib": ">=2.9.0"
+    "php-amqplib/php-amqplib": ">=2.9.0",
+    "vlucas/phpdotenv": "^5.1"
   }
 }
