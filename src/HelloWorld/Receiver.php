@@ -26,7 +26,6 @@ final class Receiver
     public function consume(): void
     {
         $this->channel->queueDeclare('hello', false, false, false, false);
-
         $this->writer->write(" [x] Waiting for messages. To exit press Ctrl+C\n");
 
         $callback = fn ($message) => $this->writer->write(" [x] Received {$message->body}\n");

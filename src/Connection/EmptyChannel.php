@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace RabbitMQ\Connection;
 
 use PhpAmqpLib\Message\AMQPMessage;
-use RabbitMQ\Connection\ChannelInterface;
 
 final class EmptyChannel implements ChannelInterface
 {

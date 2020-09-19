@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Dotenv\Dotenv;
+use PhpAmqpLib\Message\AMQPMessage;
 use RabbitMQ\Connection\AMQPStreamConnection;
 use RabbitMQ\HelloWorld\Sender;
 use RabbitMQ\IO\ConsoleWriter;
@@ -20,4 +21,4 @@ $connection = new AMQPStreamConnection(
 );
 
 $sender = new Sender(new ConsoleWriter(), $connection->channel());
-$sender->publish();
+$sender->publish(new AMQPMessage('Hello World!'));

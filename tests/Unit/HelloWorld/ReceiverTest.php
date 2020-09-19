@@ -12,7 +12,7 @@ use RabbitMQTests\Unit\InMemoryWriter;
 class ReceiverTest extends TestCase
 {
     /** @test */
-    public function receiveConsume(): void
+    public function consume(): void
     {
         $writer = new InMemoryWriter();
         $receiver = new Receiver($writer, new EmptyChannel());
