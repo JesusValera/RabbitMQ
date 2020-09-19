@@ -24,13 +24,10 @@ final class Sender
         $this->channel->close();
     }
 
-    public function publish(): void
+    public function publish(AMQPMessage $message): void
     {
         $this->channel->queueDeclare('hello', false, false, false, false);
-
-        $message = new AMQPMessage('Hello World!');
         $this->channel->basicPublish($message, '', 'hello');
-
-        $this->writer->write(" [x] Sent 'Hello World!'\n");
+        $this->writer->write(" [x] Sent '{$message->getBody()}'\n");
     }
 }
