@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Dotenv\Dotenv;
-use RabbitMQ\Connection\AMQPStreamConnection;
+use RabbitMQ\Connection\AmqpStreamConnection;
 use RabbitMQ\HelloWorld\Receiver;
 use RabbitMQ\IO\ConsoleWriter;
 
@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->load();
 
-$connection = new AMQPStreamConnection(
+$connection = new AmqpStreamConnection(
     $_ENV['RABBIT_HOST'],
     $_ENV['RABBIT_PORT'],
     $_ENV['RABBIT_USERNAME'],

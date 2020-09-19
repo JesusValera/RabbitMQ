@@ -29,7 +29,7 @@ final class Receiver
         $this->writer->write(" [x] Waiting for messages. To exit press Ctrl+C\n");
 
         $callback = fn ($message) => $this->writer->write(" [x] Received {$message->body}\n");
-        $this->channel->basic_consume('hello', '', false, true, false, false, $callback);
+        $this->channel->basicConsume('hello', '', false, true, false, false, $callback);
 
         while ($this->channel->isConsuming()) {
             $this->channel->wait();

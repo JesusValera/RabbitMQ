@@ -18,7 +18,7 @@ interface ChannelInterface
 
     public function close(): void;
 
-    public function basic_consume(
+    public function basicConsume(
         string $queueName,
         string $consumerTag,
         bool $noLocal,
