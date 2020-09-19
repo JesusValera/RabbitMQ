@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTests\Unit\HelloWorld;
+namespace RabbitMQ\Connection;
 
 use PhpAmqpLib\Message\AMQPMessage;
 use RabbitMQ\Connection\ChannelInterface;
 
-final class ChannelFaker implements ChannelInterface
+final class EmptyChannel implements ChannelInterface
 {
-    public function queue_declare(
+    public function queueDeclare(
         string $queueName,
         bool $passive,
         bool $durable,
@@ -36,7 +36,7 @@ final class ChannelFaker implements ChannelInterface
         $callback($message);
     }
 
-    public function is_consuming(): bool
+    public function isConsuming(): bool
     {
         return false;
     }
@@ -45,7 +45,7 @@ final class ChannelFaker implements ChannelInterface
     {
     }
 
-    public function basic_publish(AMQPMessage $message, string $exchange, string $routingKey): void
+    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void
     {
     }
 }

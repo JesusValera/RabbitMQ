@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace RabbitMQTests\Unit\HelloWorld;
 
 use PHPUnit\Framework\TestCase;
+use RabbitMQ\Connection\EmptyChannel;
 use RabbitMQ\HelloWorld\Receiver;
-use RabbitMQTests\Unit\Writer;
+use RabbitMQTests\Unit\InMemoryWriter;
 
 class ReceiverTest extends TestCase
 {
     /** @test */
     public function receiveConsume(): void
     {
-        $writer = new Writer();
-        $receiver = new Receiver($writer, new StreamConnectionFaker());
+        $writer = new InMemoryWriter();
+        $receiver = new Receiver($writer, new EmptyChannel());
         $receiver->consume();
 
         self::assertSame(
@@ -22,7 +23,7 @@ class ReceiverTest extends TestCase
                 " [x] Waiting for messages. To exit press Ctrl+C\n",
                 " [x] Received dummy channel\n",
             ],
-            $writer->messages
+            $writer->messages()
         );
     }
 }

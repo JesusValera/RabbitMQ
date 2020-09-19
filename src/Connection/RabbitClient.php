@@ -11,7 +11,7 @@ final class RabbitClient
 {
     public function getConnection(RabbitClientCredentials $credentials): StreamConnectionInterface
     {
-        return new StreamConnection(
+        return new AMQPStreamConnection(
             new AMQPStreamConnection(
                 $credentials->host,
                 $credentials->port,

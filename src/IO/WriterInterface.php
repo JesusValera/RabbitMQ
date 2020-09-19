@@ -6,5 +6,5 @@ namespace RabbitMQ\IO;
 
 interface WriterInterface
 {
-    public function write($message): void;
+    public function write(string $message): void;
 }

@@ -6,7 +6,7 @@ namespace RabbitMQ\IO;
 
 final class ConsoleWriter implements WriterInterface
 {
-    public function write($message): void
+    public function write(string $message): void
     {
         echo $message;
     }

@@ -8,7 +8,7 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 interface ChannelInterface
 {
-    public function queue_declare(
+    public function queueDeclare(
         string $queueName,
         bool $passive,
         bool $durable,
@@ -28,10 +28,10 @@ interface ChannelInterface
         \Closure $callback
     ): void;
 
-    public function is_consuming(): bool;
+    public function isConsuming(): bool;
 
     public function wait(): void;
 
-    public function basic_publish(AMQPMessage $message, string $exchange, string $routingKey): void;
+    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void;
 
 }
