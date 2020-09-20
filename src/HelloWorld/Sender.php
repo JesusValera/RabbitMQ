@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQ\HelloWorld;
+namespace RabbitMQTraining\HelloWorld;
 
 use PhpAmqpLib\Message\AMQPMessage;
-use RabbitMQ\Connection\ChannelInterface;
-use RabbitMQ\IO\WriterInterface;
+use RabbitMQTraining\Connection\ChannelInterface;
+use RabbitMQTraining\IO\WriterInterface;
 
 final class Sender
 {

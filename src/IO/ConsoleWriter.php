@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQ\IO;
+namespace RabbitMQTraining\IO;
 
 final class ConsoleWriter implements WriterInterface
 {

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Dotenv\Dotenv;
-use RabbitMQ\Connection\AmqpStreamConnection;
-use RabbitMQ\HelloWorld\Receiver;
-use RabbitMQ\IO\ConsoleWriter;
+use RabbitMQTraining\Connection\AmqpStreamConnection;
+use RabbitMQTraining\HelloWorld\Receiver;
+use RabbitMQTraining\IO\ConsoleWriter;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 

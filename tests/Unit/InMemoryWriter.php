@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTests\Unit;
+namespace RabbitMQTrainingTests\Unit;
 
-use RabbitMQ\IO\WriterInterface;
+use RabbitMQTraining\IO\WriterInterface;
 
 final class InMemoryWriter implements WriterInterface
 {

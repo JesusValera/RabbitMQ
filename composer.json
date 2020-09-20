@@ -9,12 +9,12 @@
   },
   "autoload": {
     "psr-4": {
-      "RabbitMQ\\": "src"
+      "RabbitMQTraining\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "RabbitMQTests\\": "tests"
+      "RabbitMQTrainingTests\\": "tests"
     }
   }
 }

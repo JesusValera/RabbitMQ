@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Dotenv\Dotenv;
 use PhpAmqpLib\Message\AMQPMessage;
-use RabbitMQ\Connection\AmqpStreamConnection;
-use RabbitMQ\HelloWorld\Sender;
-use RabbitMQ\IO\ConsoleWriter;
+use RabbitMQTraining\Connection\AmqpStreamConnection;
+use RabbitMQTraining\HelloWorld\Sender;
+use RabbitMQTraining\IO\ConsoleWriter;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 

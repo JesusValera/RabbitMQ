@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTests\Unit\HelloWorld;
+namespace RabbitMQTrainingTests\Unit\HelloWorld;
 
 use PhpAmqpLib\Message\AMQPMessage;
 use PHPUnit\Framework\TestCase;
-use RabbitMQ\Connection\EmptyChannel;
-use RabbitMQ\HelloWorld\Sender;
-use RabbitMQTests\Unit\InMemoryWriter;
+use RabbitMQTraining\Connection\EmptyChannel;
+use RabbitMQTraining\HelloWorld\Sender;
+use RabbitMQTrainingTests\Unit\InMemoryWriter;
 
 class SenderTest extends TestCase
 {

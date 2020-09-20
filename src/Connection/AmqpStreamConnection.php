@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQ\Connection;
+namespace RabbitMQTraining\Connection;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection as RabbitAMQPStreamConnection;
 

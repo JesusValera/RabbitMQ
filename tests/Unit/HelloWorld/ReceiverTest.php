@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTests\Unit\HelloWorld;
+namespace RabbitMQTrainingTests\Unit\HelloWorld;
 
 use PHPUnit\Framework\TestCase;
-use RabbitMQ\Connection\EmptyChannel;
-use RabbitMQ\HelloWorld\Receiver;
-use RabbitMQTests\Unit\InMemoryWriter;
+use RabbitMQTraining\Connection\EmptyChannel;
+use RabbitMQTraining\HelloWorld\Receiver;
+use RabbitMQTrainingTests\Unit\InMemoryWriter;
 
 class ReceiverTest extends TestCase
 {
