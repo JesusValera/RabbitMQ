@@ -38,7 +38,7 @@ final class AmqpChannel implements ChannelInterface
         bool $noAck,
         bool $exclusive,
         bool $noWait,
-        \Closure $callback
+        /* callable */ $callback
     ): void {
         $this->channel->basic_consume($queueName, $consumerTag, $noLocal, $noAck, $exclusive, $noWait, $callback);
     }
@@ -56,5 +56,15 @@ final class AmqpChannel implements ChannelInterface
     public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void
     {
         $this->channel->basic_publish($message, $exchange, $routingKey);
+    }
+
+    public function basic_ack(int $deliveryTag, bool $multiple = false): void
+    {
+        $this->channel->basic_ack($deliveryTag, $multiple);
+    }
+
+    public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal)
+    {
+        $this->channel->basic_qos($prefetchSize, $prefetchCount, $aGlobal);
     }
 }

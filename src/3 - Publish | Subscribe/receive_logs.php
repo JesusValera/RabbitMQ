@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Dotenv\Dotenv;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->load();
 
 $host = $_ENV['RABBIT_HOST'];

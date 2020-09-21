@@ -34,4 +34,10 @@ interface ChannelInterface
 
     public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void;
 
+    public function basic_ack(?int $deliveryTag, bool $multiple = false): void;
+
+    /**
+     * @return mixed
+     */
+    public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal);
 }

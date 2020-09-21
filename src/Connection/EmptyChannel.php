@@ -30,9 +30,16 @@ final class EmptyChannel implements ChannelInterface
         bool $noWait,
         \Closure $callback
     ): void {
-        $message = new \stdClass();
-        $message->body = 'dummy channel';
-        $callback($message);
+        //$callback(new AMQPMessage('basicConsume callback'));
+        $callback(
+            (object) [
+                'body' => 'basicConsume callback',
+                'delivery_info' => [
+                    'channel' => new EmptyChannel(),
+                    'delivery_tag' => null,
+                ],
+            ]
+        );
     }
 
     public function isConsuming(): bool
@@ -45,6 +52,14 @@ final class EmptyChannel implements ChannelInterface
     }
 
     public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void
+    {
+    }
+
+    public function basic_ack(?int $deliveryTag, bool $multiple = false): void
+    {
+    }
+
+    public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal)
     {
     }
 }

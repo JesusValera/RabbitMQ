@@ -2,26 +2,27 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTrainingTests\Unit\HelloWorld;
+namespace RabbitMQTrainingTests\Unit\WorkQueues;
 
 use PHPUnit\Framework\TestCase;
 use RabbitMQTraining\Connection\EmptyChannel;
-use RabbitMQTraining\HelloWorld\Receiver;
+use RabbitMQTraining\WorkQueues\Worker;
 use RabbitMQTrainingTests\Unit\InMemoryWriter;
 
-class ReceiverTest extends TestCase
+final class WorkerTest extends TestCase
 {
     /** @test */
-    public function consume(): void
+    public function publish()
     {
         $writer = new InMemoryWriter();
-        $receiver = new Receiver($writer, new EmptyChannel());
-        $receiver->consume();
+        $newTask = new Worker($writer, new EmptyChannel());
+        $newTask->consume();
 
         self::assertSame(
             [
                 " [x] Waiting for messages. To exit press Ctrl+C\n",
                 " [x] Received basicConsume callback\n",
+                " [x] Done\n",
             ],
             $writer->messages()
         );

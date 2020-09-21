@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace RabbitMQTraining\HelloWorld;
 
+use PhpAmqpLib\Message\AMQPMessage;
 use RabbitMQTraining\Connection\ChannelInterface;
 use RabbitMQTraining\IO\WriterInterface;
 
