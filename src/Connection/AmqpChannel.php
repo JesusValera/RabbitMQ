@@ -58,7 +58,7 @@ final class AmqpChannel implements ChannelInterface
         $this->channel->basic_publish($message, $exchange, $routingKey);
     }
 
-    public function basic_ack(int $deliveryTag, bool $multiple = false): void
+    public function basicAck(?int $deliveryTag, bool $multiple = false): void
     {
         $this->channel->basic_ack($deliveryTag, $multiple);
     }

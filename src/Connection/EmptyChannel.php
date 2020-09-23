@@ -28,18 +28,21 @@ final class EmptyChannel implements ChannelInterface
         bool $noAck,
         bool $exclusive,
         bool $noWait,
-        \Closure $callback
+        /* callable */ $callback
     ): void {
-        //$callback(new AMQPMessage('basicConsume callback'));
-        $callback(
-            (object) [
-                'body' => 'basicConsume callback',
-                'delivery_info' => [
-                    'channel' => new EmptyChannel(),
-                    'delivery_tag' => null,
-                ],
-            ]
-        );
+        $channel = new class extends \PhpAmqpLib\Channel\AMQPChannel {
+            public function __construct()
+            {
+            }
+
+            public function basic_ack($deliveryTag, $multiple = false): void
+            {
+            }
+        };
+        $message = new AMQPMessage('basicConsume callback');
+        $message->setChannel($channel);
+        $message->setDeliveryTag(1);
+        $callback($message);
     }
 
     public function isConsuming(): bool
@@ -55,7 +58,7 @@ final class EmptyChannel implements ChannelInterface
     {
     }
 
-    public function basic_ack(?int $deliveryTag, bool $multiple = false): void
+    public function basicAck(?int $deliveryTag, bool $multiple = false): void
     {
     }
 

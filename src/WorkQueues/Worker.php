@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace RabbitMQTraining\WorkQueues;
 
+use PhpAmqpLib\Message\AMQPMessage;
+use RabbitMQTraining\Connection\AmqpChannel;
 use RabbitMQTraining\Connection\ChannelInterface;
 use RabbitMQTraining\IO\WriterInterface;
 
@@ -38,15 +40,13 @@ final class Worker
 
     private function createCallback(): callable
     {
-        return function (/* AMQPMessage */ $message) {
-            $this->writer->write(" [x] Received {$message->body}\n");
-            sleep(substr_count($message->body, '.'));
+        return function (AMQPMessage $message) {
+            $this->writer->write(" [x] Received {$message->getBody()}\n");
+            sleep(substr_count($message->getBody(), '.'));
             $this->writer->write(" [x] Done\n");
 
-            $this->channel = $message->delivery_info['channel'];
-            $this->channel->basic_ack($message->delivery_info['delivery_tag']);
-            //$this->channel = new AmqpChannel($message->getChannel());
-            //$this->channel->basicAck($message->getDeliveryTag());
+            $this->channel = new AmqpChannel($message->getChannel());
+            $this->channel->basicAck($message->getDeliveryTag());
         };
     }
 }

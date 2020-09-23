@@ -25,7 +25,7 @@ interface ChannelInterface
         bool $noAck,
         bool $exclusive,
         bool $noWait,
-        \Closure $callback
+        /* callable */ $callback
     ): void;
 
     public function isConsuming(): bool;
@@ -34,7 +34,7 @@ interface ChannelInterface
 
     public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void;
 
-    public function basic_ack(?int $deliveryTag, bool $multiple = false): void;
+    public function basicAck(?int $deliveryTag, bool $multiple = false): void;
 
     /**
      * @return mixed
