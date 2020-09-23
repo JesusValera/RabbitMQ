@@ -14,7 +14,8 @@ final class EmptyChannel implements ChannelInterface
         bool $durable,
         bool $exclusive,
         bool $autoDelete
-    ): void {
+    ): array {
+        return [''];
     }
 
     public function close(): void
@@ -54,7 +55,7 @@ final class EmptyChannel implements ChannelInterface
     {
     }
 
-    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void
+    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey = ''): void
     {
     }
 
@@ -63,6 +64,14 @@ final class EmptyChannel implements ChannelInterface
     }
 
     public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal)
+    {
+    }
+
+    public function exchangeDeclare(string $exchange, string $type, bool $passive, bool $durable, bool $autoDelete)
+    {
+    }
+
+    public function queueBind(string $queueName, string $exchange)
     {
     }
 }

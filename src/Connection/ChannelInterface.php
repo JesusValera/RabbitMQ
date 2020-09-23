@@ -14,7 +14,7 @@ interface ChannelInterface
         bool $durable,
         bool $exclusive,
         bool $autoDelete
-    ): void;
+    ): array;
 
     public function close(): void;
 
@@ -32,7 +32,7 @@ interface ChannelInterface
 
     public function wait(): void;
 
-    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void;
+    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey = ''): void;
 
     public function basicAck(?int $deliveryTag, bool $multiple = false): void;
 
@@ -40,4 +40,14 @@ interface ChannelInterface
      * @return mixed
      */
     public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal);
+
+    /**
+     * @return null|mixed
+     */
+    public function exchangeDeclare(string $exchange, string $type, bool $passive, bool $durable, bool $autoDelete);
+
+    /**
+     * @return null|mixed
+     */
+    public function queueBind(string $queueName, string $exchange);
 }

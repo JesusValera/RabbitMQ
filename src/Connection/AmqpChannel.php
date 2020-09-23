@@ -22,8 +22,8 @@ final class AmqpChannel implements ChannelInterface
         bool $durable,
         bool $exclusive,
         bool $autoDelete
-    ): void {
-        $this->channel->queue_declare($queueName, $passive, $durable, $exclusive, $autoDelete);
+    ): array {
+        return $this->channel->queue_declare($queueName, $passive, $durable, $exclusive, $autoDelete);
     }
 
     public function close(): void
@@ -53,7 +53,7 @@ final class AmqpChannel implements ChannelInterface
         $this->channel->wait();
     }
 
-    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey): void
+    public function basicPublish(AMQPMessage $message, string $exchange, string $routingKey = ''): void
     {
         $this->channel->basic_publish($message, $exchange, $routingKey);
     }
@@ -66,5 +66,15 @@ final class AmqpChannel implements ChannelInterface
     public function basicQos(?int $prefetchSize, int $prefetchCount, ?bool $aGlobal)
     {
         $this->channel->basic_qos($prefetchSize, $prefetchCount, $aGlobal);
+    }
+
+    public function exchangeDeclare(string $exchange, string $type, bool $passive, bool $durable, bool $autoDelete)
+    {
+        $this->channel->exchange_declare($exchange, $type, $passive, $durable, $autoDelete);
+    }
+
+    public function queueBind(string $queueName, string $exchange)
+    {
+        return $this->channel->queue_bind($queueName, $exchange);
     }
 }
