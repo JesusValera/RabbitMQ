@@ -13,7 +13,7 @@ use RabbitMQTrainingTests\Unit\InMemoryWriter;
 final class NewTaskTest extends TestCase
 {
     /** @test */
-    public function publish()
+    public function publish(): void
     {
         $writer = new InMemoryWriter();
         $newTask = new NewTask($writer, new EmptyChannel());

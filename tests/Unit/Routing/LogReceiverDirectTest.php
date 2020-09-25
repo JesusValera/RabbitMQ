@@ -12,7 +12,7 @@ use RabbitMQTrainingTests\Unit\InMemoryWriter;
 final class LogReceiverDirectTest extends TestCase
 {
     /** @test */
-    public function publish(): void
+    public function consume(): void
     {
         $writer = new InMemoryWriter();
         $logReceiver = new LogReceiverDirect($writer, new EmptyChannel());
