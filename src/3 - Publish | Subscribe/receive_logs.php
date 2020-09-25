@@ -12,11 +12,12 @@ use RabbitMQTraining\PublishSubscribe\LogReceiver;
 $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->load();
 
-$host = $_ENV['RABBIT_HOST'];
-$port = $_ENV['RABBIT_PORT'];
-$username = $_ENV['RABBIT_USERNAME'];
-$password = $_ENV['RABBIT_PASSWORD'];
+$connection = new AmqpStreamConnection(
+    $_ENV['RABBIT_HOST'],
+    $_ENV['RABBIT_PORT'],
+    $_ENV['RABBIT_USERNAME'],
+    $_ENV['RABBIT_PASSWORD']
+);
 
-$connection = new AMQPStreamConnection($host, $port, $username, $password);
-$logReceiver = new LogReceiver(new ConsoleWriter(), $connection->channel());
-$logReceiver->consume();
+$receiver = new LogReceiver(new ConsoleWriter(), $connection->channel());
+$receiver->consume();
