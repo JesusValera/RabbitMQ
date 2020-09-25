@@ -73,8 +73,8 @@ final class AmqpChannel implements ChannelInterface
         $this->channel->exchange_declare($exchange, $type, $passive, $durable, $autoDelete);
     }
 
-    public function queueBind(string $queueName, string $exchange)
+    public function queueBind(string $queueName, string $exchange, string $routingKey = '')
     {
-        return $this->channel->queue_bind($queueName, $exchange);
+        return $this->channel->queue_bind($queueName, $exchange, $routingKey);
     }
 }

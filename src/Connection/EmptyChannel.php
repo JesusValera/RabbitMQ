@@ -71,7 +71,7 @@ final class EmptyChannel implements ChannelInterface
     {
     }
 
-    public function queueBind(string $queueName, string $exchange)
+    public function queueBind(string $queueName, string $exchange, string $routingKey = '')
     {
     }
 }

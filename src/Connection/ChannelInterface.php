@@ -49,5 +49,5 @@ interface ChannelInterface
     /**
      * @return null|mixed
      */
-    public function queueBind(string $queueName, string $exchange);
+    public function queueBind(string $queueName, string $exchange, string $routingKey = '');
 }
