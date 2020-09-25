@@ -42,7 +42,7 @@ final class EmptyChannel implements ChannelInterface
         };
         $message = new AMQPMessage('basicConsume callback');
         $message->setChannel($channel);
-        $message->setDeliveryTag(1);
+        $message->setDeliveryInfo(1, false, 'exchange', 'routingKey');
         $callback($message);
     }
 

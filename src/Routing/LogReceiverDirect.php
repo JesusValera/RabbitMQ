@@ -33,7 +33,7 @@ final class LogReceiverDirect
             $this->channel->queueBind($queueName, 'direct_logs', $severity);
         }
 
-        $this->writer->write(" [*] Waiting for logs. To exit press CTRL+C\n");
+        $this->writer->write(" [x] Waiting for logs. To exit press Ctrl+C\n");
 
         $callback = function (AMQPMessage $message) {
             $this->writer->write(" [x] {$message->getRoutingKey()}: {$message->getBody()}\n");
