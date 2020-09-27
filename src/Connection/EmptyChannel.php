@@ -31,7 +31,8 @@ final class EmptyChannel implements ChannelInterface
         bool $noWait,
         /* callable */ $callback
     ): void {
-        $channel = new class extends \PhpAmqpLib\Channel\AMQPChannel {
+        $channel = new class extends \PhpAmqpLib\Channel\AMQPChannel
+        {
             public function __construct()
             {
             }
@@ -39,10 +40,22 @@ final class EmptyChannel implements ChannelInterface
             public function basic_ack($deliveryTag, $multiple = false): void
             {
             }
+
+            public function basic_publish(
+                $msg,
+                $exchange = '',
+                $routing_key = '',
+                $mandatory = false,
+                $immediate = false,
+                $ticket = null
+            ) {
+            }
         };
         $message = new AMQPMessage('basicConsume callback');
         $message->setChannel($channel);
         $message->setDeliveryInfo(1, false, 'exchange', 'routingKey');
+        $message->set('correlation_id', '1');
+        $message->set('reply_to', '1');
         $callback($message);
     }
 
