@@ -9,7 +9,7 @@ use RabbitMQTraining\Connection\EmptyChannel;
 use RabbitMQTraining\HelloWorld\Receiver;
 use RabbitMQTrainingTests\Unit\InMemoryWriter;
 
-class ReceiverTest extends TestCase
+final class ReceiverTest extends TestCase
 {
     /** @test */
     public function consume(): void

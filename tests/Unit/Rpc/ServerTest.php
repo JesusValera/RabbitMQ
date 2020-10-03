@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RabbitMQTrainingTest\Rpc;
+namespace RabbitMQTrainingTests\Unit\Rpc;
 
 use PHPUnit\Framework\TestCase;
 use RabbitMQTraining\Connection\EmptyChannel;

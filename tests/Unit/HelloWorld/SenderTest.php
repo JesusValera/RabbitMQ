@@ -10,7 +10,7 @@ use RabbitMQTraining\Connection\EmptyChannel;
 use RabbitMQTraining\HelloWorld\Sender;
 use RabbitMQTrainingTests\Unit\InMemoryWriter;
 
-class SenderTest extends TestCase
+final class SenderTest extends TestCase
 {
     /** @test */
     public function publish(): void

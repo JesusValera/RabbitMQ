@@ -49,15 +49,15 @@ final class Server
         }
     }
 
-    private function fibonacci(int $n): int
+    private function fibonacci(int $number): int
     {
-        if ($n === 0) {
+        if ($number <= 0) {
             return 0;
         }
-        if ($n === 1) {
+        if ($number === 1) {
             return 1;
         }
 
-        return $this->fibonacci($n - 1) + $this->fibonacci($n - 2);
+        return $this->fibonacci($number - 1) + $this->fibonacci($number - 2);
     }
 }

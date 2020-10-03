@@ -20,5 +20,10 @@ $connection = new AmqpStreamConnection(
     $_ENV['RABBIT_PASSWORD']
 );
 
+$data = (int) implode(' ', array_slice($argv, 1));
+if (empty($data)) {
+    $data = 30;
+}
+
 $client = new Client(new ConsoleWriter(), $connection->channel(), new StandardUniqueId());
-$client->publish(30);
+$client->publish($data);

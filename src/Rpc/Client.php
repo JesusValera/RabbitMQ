@@ -48,13 +48,9 @@ final class Client
 
     private function createCallback(string $correlationId, &$response): callable
     {
-        return function (AMQPMessage $message) use (&$response, $correlationId) {
+        return function (AMQPMessage $message) use (&$response, $correlationId): void {
             if ($message->get('correlation_id') === $correlationId) {
                 $response = $message->body;
-            } else {
-                echo $message->get('correlation_id') . PHP_EOL;
-                echo $correlationId . PHP_EOL;
-                die('asdf');
             }
         };
     }
